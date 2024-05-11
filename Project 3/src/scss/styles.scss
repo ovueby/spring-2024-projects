@@ -1,0 +1,9 @@
+@import "~bootstrap/scss/bootstrap";
+$bootstrap-icons-font-dir: "~bootstrap-icons/font/fonts";
+@import "~bootstrap-icons/font/bootstrap-icons.scss";
+
+.todo-completed {
+    text-decoration: line-through;
+    color: $gray-600;
+    font-style: italic;
+}

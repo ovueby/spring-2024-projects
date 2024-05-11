@@ -1,0 +1,19 @@
+2024/05/10
+- Created Project 5
+- Finished Project 5
+
+2024/05/09
+- Created Project 4
+- Finished Project 4
+- Created Project 3
+- Finished Project 3
+- Finished Project 2
+
+2024/05/08
+- Created Project 2
+- Finished Project 1
+- Concluded month-long research on Vue, React, and other frameworks.
+
+2024/05/07
+- Created Project 1
+- Concluded research into Bootstrap.

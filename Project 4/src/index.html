@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Hyperscript Gallery</title>
+    <script type="text/hyperscript">
+      // It was rather fun to learn this framework
+      // But I had to read source code and old bug reports to learn how to do anything
+      def $makeTodo(name)
+      append '<li>' + name + '&nbsp;<button _="on click remove closest <li/>">x</button>' to #todos
+      call _hyperscript.processNode(#todos) // required to enable the hyperscript in the new entry
+      end
+
+      init
+        call $makeTodo("Eat")
+        call $makeTodo("Drink")
+        call $makeTodo("Be merry")
+      end
+    </script>
+
+  </head>
+  <body>
+    <div id="app">
+      <h1>WELCOME</h1>
+      <h2>To the Animation Factory</h2>
+      <h3>We have many animations for your perusal.</h3>
+      <hr>
+      <h2>The puppy</h2>
+      <h5>You can play with this puppy using the various animations below</h5>
+      <div style="padding: 50px" id="prepad"></div>
+      <img src="images/puppy.webp" id="puppy"
+           _=""/>
+      <br/>
+      <div style="padding: 0px" id="postpad"></div>
+      <div style="padding: 10px"></div>
+      <button
+        _="on click tell #puppy transition opacity to 0 over 2 seconds
+           then wait 1s
+           then transition opacity to 1 over 2 seconds">
+        Fade
+      </button>
+      <button
+        _="on click
+           set rand to Math.random() * 360
+           then set r2 to `hsl($rand 100% 50%)`
+           then tell #puppy set *boxShadow to `0 0 0 $r2`
+           then transition *boxShadow to `7px 7px 15px $r2`
+           then wait 1s
+           then transition *boxShadow to `0px 0px 0px $r2`">
+        Shadowize
+      </button>
+      <button
+        _="on click
+           async transition #prepad's *padding to 0px over 1s
+           then transition #postpad's *padding to 50px over 1s
+           then wait 1s
+           then async transition #postpad's *padding to 0px over 1s
+           then transition #prepad's *padding to 50px over 1s">
+        Jump
+      </button>
+      <button
+        _="on click tell #puppy
+           transition *width to 200px over 1s
+           then wait 1s
+           then transition *width to 100% over 1s">
+        Shrink Ray
+      </button>
+        <hr>
+        <h2>2Do&#8482;</h2>
+        <h5>Your one stop shop for all todoing needs</h5>
+        <div>
+          <input id="in" type="text"
+                 _="on keydown[key is 'Enter']
+                      $makeTodo(value of me)
+                      set my.value to ''
+                    end"/>
+          <button _="on click set t to #in then $makeTodo(value of t) then set t.value to ''">New</button>
+          <ul id="todos">
+          </ul>
+        </div>
+
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
